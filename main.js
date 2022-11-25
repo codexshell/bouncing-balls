@@ -1,10 +1,10 @@
 // setup canvas
 
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
 
-const width = canvas.width = window.innerWidth;
-const height = canvas.height = window.innerHeight;
+const width = (canvas.width = window.innerWidth);
+const height = (canvas.height = window.innerHeight);
 
 // function to generate random number
 
@@ -30,12 +30,9 @@ class Shape {
 }
 
 // class definition for instances
-class Ball {
+class Ball extends Shape {
   constructor(x, y, velX, velY, color, size) {
-    this.x = x;
-    this.y = y;
-    this.velX = velX;
-    this.velY = velY;
+    super(x, y, velX, velY);
     this.color = color;
     this.size = size;
   }
@@ -48,20 +45,20 @@ class Ball {
   }
 
   update() {
-    if ((this.x + this.size) >= width) {
-      this.velX = -(this.velX);
+    if (this.x + this.size >= width) {
+      this.velX = -this.velX;
     }
 
-    if ((this.x - this.size) <= 0) {
-      this.velX = -(this.velX);
+    if (this.x - this.size <= 0) {
+      this.velX = -this.velX;
     }
 
-    if ((this.y + this.size) >= height) {
-      this.velY = -(this.velY);
+    if (this.y + this.size >= height) {
+      this.velY = -this.velY;
     }
 
-    if ((this.y - this.size) <= 0) {
-      this.velY = -(this.velY);
+    if (this.y - this.size <= 0) {
+      this.velY = -this.velY;
     }
 
     this.x += this.velX;
@@ -81,8 +78,6 @@ class Ball {
       }
     }
   }
-
-
 }
 
 const balls = [];
@@ -117,4 +112,3 @@ function loop() {
 }
 
 loop();
-
