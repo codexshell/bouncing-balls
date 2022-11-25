@@ -19,7 +19,7 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-// class definition fof instances
+// class definition for instances
 class Ball {
   constructor(x, y, velX, velY, color, size) {
     this.x = x;
