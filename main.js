@@ -29,6 +29,16 @@ class Shape {
   }
 }
 
+// EvilCircle definition
+class EvilCircle extends Shape {
+  constructor(x, y) {
+    super(x, y, 20, 20);
+
+    this.color = "white";
+    this.size = 20;
+  }
+}
+
 // class definition for instances
 class Ball extends Shape {
   constructor(x, y, velX, velY, color, size) {
