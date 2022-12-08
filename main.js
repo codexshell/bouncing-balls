@@ -54,6 +54,14 @@ class EvilCircle extends Shape {
       }
     });
   }
+
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = strokeStyle;
+    ctx.lineWidth = 3;
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
 }
 
 // class definition for instances
