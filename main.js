@@ -1,5 +1,4 @@
 // setup canvas
-
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -7,14 +6,12 @@ const width = (canvas.width = window.innerWidth);
 const height = (canvas.height = window.innerHeight);
 
 // function to generate random number
-
 function random(min, max) {
   const num = Math.floor(Math.random() * (max - min + 1)) + min;
   return num;
 }
 
 // function to generate random color
-
 function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
@@ -61,6 +58,24 @@ class EvilCircle extends Shape {
     ctx.lineWidth = 3;
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
     ctx.stroke();
+  }
+
+  update() {
+    if (this.x + this.size >= width) {
+      this.velX = -this.velX;
+    }
+
+    if (this.x - this.size <= 0) {
+      this.velX = -this.velX;
+    }
+
+    if (this.y + this.size >= height) {
+      this.velY = -this.velY;
+    }
+
+    if (this.y - this.size <= 0) {
+      this.velY = -this.velY;
+    }
   }
 }
 
