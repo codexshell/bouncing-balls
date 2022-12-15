@@ -77,6 +77,18 @@ class EvilCircle extends Shape {
       this.y = 0 + this.size;
     }
   }
+
+  collisionDetect() {
+    for (const ball of balls.filter((ball) => ball.exists)) {
+      const dx = this.x - ball.x;
+      const dy = this.y - ball.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < this.size + ball.size) {
+        ball.exists = false;
+      }
+    }
+  }
 }
 
 // class definition for instances
