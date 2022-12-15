@@ -1,4 +1,5 @@
 // setup canvas
+const para = document.querySelector("p");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -163,6 +164,8 @@ while (balls.length < 25) {
   balls.push(ball);
 }
 
+let numOfBalls = checkNumberOfBalls();
+
 function loop() {
   ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
   ctx.fillRect(0, 0, width, height);
@@ -176,7 +179,20 @@ function loop() {
     circle.checkBounds();
   }
 
+  numOfBalls = checkNumberOfBalls();
+  para.textContent = `Ball count: ${numOfBalls}`;
+
   requestAnimationFrame(loop);
 }
 
 loop();
+
+function checkNumberOfBalls() {
+  return balls.reduce((accumulator, ball) => {
+    if (ball.exists) {
+      return ++accumulator;
+    } else {
+      return accumulator;
+    }
+  }, 0);
+}
